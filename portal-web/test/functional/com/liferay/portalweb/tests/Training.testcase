@@ -1,0 +1,27 @@
+definition {
+
+	var userEmailAddress = "test@liferay.com";
+	var userPassword = "test";
+	var userPasswordReminderAnswer = "test";
+
+	@description = "Sign in to Liferay Portal as '${userEmailAddress}' using the password '${userPassword}'"
+	@priority = 3
+	test signIn {
+		AssertClick(
+			locator1 = "UserBar#USER_SIGN_IN",
+			value1 = "Sign In");
+
+		Type(
+			locator1 = "TextInput#EMAIL_ADDRESS",
+			value1 = ${userEmailAddress});
+
+		Type(
+			locator1 = "TextInput#PASSWORD",
+			value1 = ${userPassword});
+
+		Click(locator1 = "Button#SIGN_IN");
+
+		AssertElementPresent(locator1 = "UserBar#USER_AVATAR_ICON");
+	}
+
+}
