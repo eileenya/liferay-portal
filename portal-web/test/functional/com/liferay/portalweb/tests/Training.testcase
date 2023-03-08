@@ -1,4 +1,9 @@
+@component-name = "portal-smoke"
 definition {
+
+	property portal.upstream = "true";
+	property portal.release = "true";
+	property testray.main.component.name = "Smoke";
 
 	var userEmailAddress = "test@liferay.com";
 	var userPassword = "test";
@@ -6,8 +11,16 @@ definition {
 
 	@description = "Sign in to Liferay Portal as '${userEmailAddress}' using the password '${userPassword}'"
 	@priority = 3
-	test signIn {
-		AssertClick(
+	test SignIn {
+		if(IsElementPresent(locator1 = "TextInput#FIRST_EMAIL_ADDRESS")) {
+			Type(
+				locator1 = "TextInput#FIRST_EMAIL_ADDRESS",
+				value1 = ${userEmailAddress});
+			Click(locator1 = "Button#ARROW_SUBMIT_BTN");
+			Click(locator1 = "Button#I_AGREE");
+		}
+
+		else{AssertClick(
 			locator1 = "UserBar#USER_SIGN_IN",
 			value1 = "Sign In");
 
@@ -21,7 +34,7 @@ definition {
 
 		Click(locator1 = "Button#SIGN_IN");
 
-		AssertElementPresent(locator1 = "UserBar#USER_AVATAR_ICON");
-	}
+		AssertElementPresent(locator1 = "UserBar#USER_AVATAR_ICON");}	
 
+}
 }
