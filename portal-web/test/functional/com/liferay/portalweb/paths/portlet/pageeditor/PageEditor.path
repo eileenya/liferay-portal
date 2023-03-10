@@ -503,7 +503,7 @@
 </tr>
 <tr>
 	<td>FRAGMENT_SIDEBAR_LOADED</td>
-	<td>//div[contains(@class,'sidebar')]/div[contains(@class,'buttons')]/button</td>
+	<td>//div[contains(@class,'sidebar')]/div[contains(@class,'buttons')]/button//*[contains(@class, 'lexicon-icon lexicon-icon-plus')]</td>
 	<td></td>
 </tr>
 <tr>
